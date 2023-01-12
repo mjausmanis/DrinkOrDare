@@ -15,5 +15,75 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.742" />
+
+    <TextView
+        android:id="@+id/selectPlayerTitle"
+        android:layout_width="244dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="116dp"
+        android:gravity="center"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="@string/game_setup_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/triviaQuestCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trivia_questions"
+        app:layout_constraintBottom_toTopOf="@+id/truthCheck"
+        app:layout_constraintStart_toStartOf="@+id/physicalChallengeCheck" />
+
+    <CheckBox
+        android:id="@+id/truthCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/truth"
+        app:layout_constraintBottom_toTopOf="@+id/dareCheck"
+        app:layout_constraintStart_toStartOf="@+id/triviaQuestCheck" />
+
+    <CheckBox
+        android:id="@+id/physicalChallengeCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/physical_challenges"
+        app:layout_constraintBottom_toTopOf="@+id/triviaQuestCheck"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectPlayerTitle"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <CheckBox
+        android:id="@+id/spicyCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/spicy_questions"
+        app:layout_constraintBottom_toTopOf="@+id/customQuestCheck"
+        app:layout_constraintStart_toStartOf="@+id/dareCheck" />
+
+    <CheckBox
+        android:id="@+id/dareCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dare"
+        app:layout_constraintBottom_toTopOf="@+id/spicyCheck"
+        app:layout_constraintStart_toStartOf="@+id/truthCheck" />
+
+    <CheckBox
+        android:id="@+id/customQuestCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="@string/custom_questions"
+        app:layout_constraintBottom_toTopOf="@+id/startGame"
+        app:layout_constraintStart_toStartOf="@+id/spicyCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
