@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.drinkordare.databinding.FragmentSecondBinding;
+import com.example.drinkordare.databinding.PlayerInputFragBinding;
 
-public class SecondFragment extends Fragment {
+public class PlayerInputFragment extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private PlayerInputFragBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +21,7 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = PlayerInputFragBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -32,7 +32,7 @@ public class SecondFragment extends Fragment {
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
+                NavHostFragment.findNavController(PlayerInputFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
         });
