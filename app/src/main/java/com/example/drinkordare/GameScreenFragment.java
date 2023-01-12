@@ -10,14 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-<<<<<<< HEAD:app/src/main/java/com/example/drinkordare/FirstFragment.java
-public class FirstFragment extends Fragment {
-<<<<<<< Updated upstream
-//comment just for my dummy ass to test github :D
-=======
-=======
+
 import com.example.drinkordare.databinding.FragmentGameScreenBinding;
->>>>>>> c5e7fa60db6e01adf8b8d17b0f73627cd7f9a2d0:app/src/main/java/com/example/drinkordare/GameScreenFragment.java
 
 public class GameScreenFragment extends Fragment {
 
