@@ -11,7 +11,17 @@
     <string name="game_screen_label">Game</string>
 
     <string name="next">Next</string>
+    <string name="end_turn">End Turn</string>
+    <string name="reroll">Reroll</string>
     <string name="start_game">Start Game</string>
+
+
+    <string name="physical_challenges">Enable physical challenges</string>
+    <string name="trivia_questions">Enable trivia questions</string>
+    <string name="truth">Enable truth questions</string>
+    <string name="dare">Enable dares</string>
+    <string name="spicy_questions">Enable spicy questions</string>
+    <string name="custom_questions">Enable custom questions</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
