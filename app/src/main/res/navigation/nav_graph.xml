@@ -17,7 +17,11 @@
         <action
             android:id="@+id/action_MainMenuFragment_to_OptionsFragment"
             app:destination="@id/OptionsFragment" />
+        <action
+            android:id="@+id/action_MainMenuFragment_to_CustomQuestionsFragment"
+            app:destination="@id/CustomQuestionsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/PlayerInputFragment"
         android:name="com.example.drinkordare.PlayerInputFragment"
@@ -25,9 +29,10 @@
         tools:layout="@layout/player_input_frag">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/MainMenuFragment" />
+            android:id="@+id/action_PlayerInputFragment_to_GameSetupFragment"
+            app:destination="@id/GameSetupFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/OptionsFragment"
         android:name="com.example.drinkordare.OptionsFragment"
@@ -36,6 +41,50 @@
 
         <action
             android:id="@+id/action_OptionsFragment_to_MainMenuFragment"
+            app:destination="@id/MainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/GameSetupFragment"
+        android:name="com.example.drinkordare.GameSetupFragment"
+        android:label="@string/game_setup_label"
+        tools:layout="@layout/fragment_game_setup">
+
+        <action
+            android:id="@+id/action_GameSetupFragment_to_GameScreenFragment"
+            app:destination="@id/GameScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/GameScreenFragment"
+        android:name="com.example.drinkordare.GameScreenFragment"
+        android:label="@string/game_screen_label"
+        tools:layout="@layout/fragment_game_screen">
+
+
+        <action
+            android:id="@+id/action_GameScreenFragment_to_ScoreboardFragment"
+            app:destination="@id/ScoreboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/CustomQuestionsFragment"
+        android:name="com.example.drinkordare.CustomQuestionsFragment"
+        android:label="@string/custom_quest_label"
+        tools:layout="@layout/fragment_custom_questions">
+        <action
+            android:id="@+id/action_CustomQuestionsFragment_to_MainMenuFragment"
+            app:destination="@id/MainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ScoreboardFragment"
+        android:name="com.example.drinkordare.ScoreboardFragment"
+        android:label="@string/scoreboard_label"
+        tools:layout="@layout/fragment_scoreboard">
+
+
+        <action
+            android:id="@+id/action_ScoreBoardFragment_to_GameScreenFragment"
+            app:destination="@id/GameScreenFragment" />
+        <action
+            android:id="@+id/action_ScoreBoardFragment_to_MainMenuFragment"
             app:destination="@id/MainMenuFragment" />
     </fragment>
 </navigation>

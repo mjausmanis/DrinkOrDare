@@ -1,19 +1,20 @@
 package com.example.drinkordare;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.drinkordare.databinding.PlayerInputFragBinding;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class PlayerInputFragment extends Fragment {
+import com.example.drinkordare.databinding.FragmentGameSetupBinding;
 
-    private PlayerInputFragBinding binding;
+public class GameSetupFragment extends Fragment {
+
+    private FragmentGameSetupBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +22,7 @@ public class PlayerInputFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = PlayerInputFragBinding.inflate(inflater, container, false);
+        binding = FragmentGameSetupBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -29,11 +30,11 @@ public class PlayerInputFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.goToGameSetup.setOnClickListener(new View.OnClickListener() {
+        binding.startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(PlayerInputFragment.this)
-                        .navigate(R.id.action_PlayerInputFragment_to_GameSetupFragment);
+                NavHostFragment.findNavController(GameSetupFragment.this)
+                        .navigate(R.id.action_GameSetupFragment_to_GameScreenFragment);
             }
         });
     }
@@ -43,5 +44,4 @@ public class PlayerInputFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 }
