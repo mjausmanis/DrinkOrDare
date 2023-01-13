@@ -21,43 +21,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/playersTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-500dp"
         android:fontFamily="@font/berkshire_swash"
-        android:text="TextView"
+        android:text="@string/options_label"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Options" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/darkModeSwitch"
         android:layout_width="175dp"
         android:layout_height="70dp"
         android:layout_marginTop="-300dp"
-        android:text="Switch"
+        android:text="@string/dark_mode"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Darkmode" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/notificationSwitch"
         android:layout_width="175dp"
         android:layout_height="70dp"
         android:layout_marginTop="-160dp"
-        android:text="Switch"
+        android:text="@string/notifications"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Notifications" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

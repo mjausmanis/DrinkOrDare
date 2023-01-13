@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DrinkOrDare</string>
+    <string name="app_name">Drink Or Dare</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Main menu</string>
@@ -9,6 +9,13 @@
     <string name="custom_quest_label">Custom questions</string>
     <string name="scoreboard_label">How drunk are you?</string>
     <string name="game_screen_label">Game</string>
+
+    <string name="play_game">Play game</string>
+
+    <string name="dark_mode">Dark mode</string>
+    <string name="notifications">Notifications</string>
+
+    <string name="player_title">Enter player names</string>
 
     <string name="next">Next</string>
     <string name="end_turn">End Turn</string>
