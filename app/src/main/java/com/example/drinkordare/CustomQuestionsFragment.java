@@ -11,11 +11,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.example.drinkordare.databinding.FragmentCustomQuestionsBinding;
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 //Scrollable būtu jānoņem, nav īsti jēga
@@ -23,9 +32,6 @@ import java.util.ArrayList;
 // Savādak nevajag
 public class CustomQuestionsFragment extends Fragment {
     private FragmentCustomQuestionsBinding binding;
-    //šis ir tas array kur glabājas custom questions - to būs jāizmanto klāt pie main game.
-    private ArrayList<String> textList = new ArrayList<>();
-
 
     @Override
     public View onCreateView(
@@ -55,37 +61,104 @@ public class CustomQuestionsFragment extends Fragment {
         saveTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textList.add(textInput.getText().toString());
-                textInput.setText("");
+
+                String userText = textInput.getText().toString();
+                try {
+                    File file = new File(getContext().getFilesDir(), "custom.txt");
+                    FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+                    fileOutputStream.write((userText + "\n").getBytes());
+                    fileOutputStream.flush();
+                    fileOutputStream.close();
+                    textInput.setText("");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
-        Button showTextButton = view.findViewById(R.id.showTextButton);
-        showTextButton.setOnClickListener(new View.OnClickListener() {
+        Button viewSavedDaresButton = view.findViewById(R.id.viewSavedDaresButton);
+        viewSavedDaresButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showText();
-            }
-        });
-    }
-
-    //Vēl jāpievieno question noņemšana, to vēlāk.
-    private void showText() {
-        StringBuilder textBuilder = new StringBuilder();
-        for (String text : textList) {
-            textBuilder.append(text).append("\n");
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Custom questions you have saved")
-                .setMessage(textBuilder.toString())
-                .setPositiveButton("Close", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
+// Read the contents of "custom.txt"
+                final ArrayList<String> lines = new ArrayList<>();
+                try {
+                    File file = new File(getContext().getFilesDir(), "custom.txt");
+                    InputStream inputStream = new FileInputStream(file);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        lines.add(line);
+                    }
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+// Create a LinearLayout to hold the dares
+                LinearLayout layout = new LinearLayout(getContext());
+                layout.setOrientation(LinearLayout.VERTICAL);
+                for (final String dare : lines) {
+// Create a CheckBox to select the dare
+                    CheckBox dareView = new CheckBox(getContext());
+                    dareView.setText(dare);
+                    dareView.setTextSize(20);
+                    layout.addView(dareView);
+                }
+// Create a button to delete selected dares
+                Button deleteButton = new Button(getContext());
+                deleteButton.setText("Delete");
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+// Delete the selected dares from "custom.txt"
+                        try {
+                            File file = new File(getContext().getFilesDir(), "custom.txt");
+                            FileOutputStream fileOutputStream = new FileOutputStream(file);
+                            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
+                            for (int i = 0; i < layout.getChildCount(); i++) {
+                                View child = layout.getChildAt(i);
+                                if (child instanceof CheckBox) {
+                                    CheckBox checkBox = (CheckBox) child;
+                                    if (!checkBox.isChecked()) {
+                                        bw.write(lines.get(i));
+                                        bw.newLine();
+                                    }
+                                }
+                            }
+                            Toast.makeText(getContext(), "Checked dares deleted", Toast.LENGTH_SHORT).show();
+                            bw.flush();
+                            bw.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
-        AlertDialog dialog = builder.create();
-        dialog.show();
+// Create an AlertDialog to display the dares
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Saved Dares")
+                        .setView(layout)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setNeutralButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteButton.callOnClick();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+
+
+
     }
+
+
 
 
     @Override
