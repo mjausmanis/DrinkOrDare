@@ -6,15 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainMenuFragment">
 
-    <TextView
-        android:id="@+id/gameScreenTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-500dp"
-        android:fontFamily="@font/berkshire_swash"
-        android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="48sp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="460dp"
+        android:layout_height="972dp"
+        android:src="@drawable/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,33 +20,79 @@
         android:id="@+id/playGameButton"
         android:layout_width="250dp"
         android:layout_height="85dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#A19A94"
+        android:fontFamily="sans-serif-black"
         android:text="@string/play_game"
+        android:textAllCaps="true"
+        android:textColor="#3C3532"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <Button
-        android:id="@+id/goToSetting"
-        android:layout_width="250dp"
-        android:layout_height="85dp"
-        android:text="@string/options_label"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.621" />
+        app:strokeColor="#3C3532"
+        app:strokeWidth="4dp" />
 
     <Button
         android:id="@+id/goToCustQuest"
         android:layout_width="250dp"
         android:layout_height="85dp"
+        android:layout_marginTop="350dp"
+        android:backgroundTint="#A19A94"
+        android:fontFamily="sans-serif-black"
         android:text="@string/custom_quest_label"
+        android:textColor="#3C3532"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+        app:strokeColor="#3C3532"
+        app:strokeWidth="4dp" />
+
+    <Button
+        android:id="@+id/goToSetting"
+        android:layout_width="250dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="#A19A94"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/options_label"
+        android:textAllCaps="true"
+        android:textColor="#3C3532"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#3C3532"
+        app:strokeWidth="4dp" />
+
+
+    <TextView
+        android:id="@+id/gameScreenTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-540dp"
+        android:fontFamily="@font/berkshire_swash"
+        android:hint="@string/app_name"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#3C3532"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.493"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
