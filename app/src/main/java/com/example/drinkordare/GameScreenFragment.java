@@ -50,7 +50,7 @@ public class GameScreenFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //Uzliek uz questionDisplay tekstu
         String textFromFile = null;
-        textFromFile = readTextFromFile(getContext());
+        textFromFile = showQuestion(getContext());
         TextView questionDisplay = getView().findViewById(R.id.questionDisplay);
         questionDisplay.setText(textFromFile);
 
@@ -63,7 +63,7 @@ public class GameScreenFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String textFromFile = null;
-                textFromFile = readTextFromFile(getContext());
+                textFromFile = showQuestion(getContext());
                 questionDisplay.setText(textFromFile);
             }
         });
@@ -117,80 +117,13 @@ public class GameScreenFragment extends Fragment {
         });
     }
 
+    String showQuestion(Context context) {
+        ArrayList<String[]> questions = ((MainActivity)getActivity()).chosenQuestions;
 
-
-    //Lasa txt failu, randomly izvelas vienu liniju
-    //Neprasat man kā tas strāda, man jau tā smadzenes vārās no šī
-    String readTextFromFile(Context context) {
-        ArrayList<String> presetLines = new ArrayList<>();
-        ArrayList<String> customLines = new ArrayList<>();
-        ArrayList<String> combinedLines = new ArrayList<>();
-        try {
-            File presetFile = new File(context.getFilesDir(), "preset.txt");
-            InputStream presetInputStream = new FileInputStream(presetFile);
-            BufferedReader presetBr = new BufferedReader(new InputStreamReader(presetInputStream));
-            String line;
-            while ((line = presetBr.readLine()) != null) {
-                presetLines.add(line);
-            }
-            presetBr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            File customFile = new File(context.getFilesDir(), "custom.txt");
-            InputStream customInputStream = new FileInputStream(customFile);
-            BufferedReader customBr = new BufferedReader(new InputStreamReader(customInputStream));
-            String line;
-            while ((line = customBr.readLine()) != null) {
-                customLines.add(line);
-            }
-            customBr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        combinedLines.addAll(presetLines);
-        combinedLines.addAll(customLines);
-        try {
-            File combinedFile = new File(context.getFilesDir(), "combined.txt");
-            FileOutputStream fileOutputStream = new FileOutputStream(combinedFile, false);
-            for (String s : combinedLines) {
-                fileOutputStream.write((s + "\n").getBytes());
-            }
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<String> lines = new ArrayList<>();
-        try {
-            File file = new File(context.getFilesDir(), "combined.txt");
-            InputStream inputStream = new FileInputStream(file);
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            while ((line = br.readLine()) != null) {
-                lines.add(line);
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (lines.size() > 0) {
-            Random random = new Random();
-            int index = random.nextInt(lines.size());
-            return lines.get(index);
-        } else {
-            return "File is Empty";
-        }
+        Random random = new Random();
+        int index = random.nextInt(questions.size());
+        return questions.get(index)[0];
     }
-
-
-
-
-
 
     @Override
     public void onDestroyView() {

@@ -1,5 +1,5 @@
-Preset dare that comes with app nr 1.
-Preset dare that comes with app nr 2.
-Preset dare that comes with app nr 3.
-Preset dare that comes with app nr 4.
-Preset dare that comes with app nr 5.
+Physical challenge that comes with app nr 1.;physical
+Trivia question that comes with app nr 2.;trivia
+Truth question that comes with app nr 3.;truth
+Dare that comes with app nr 4.;dare
+Spicy question that comes with app nr 5.;spice
