@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameScreenFragment">
+    tools:context=".GameScreenFragment"
+    style="@style/BACKGROUND">
 
     <TableRow
         android:id="@+id/tableRow1"
@@ -20,6 +21,8 @@
         app:layout_constraintVertical_bias="0.0">
 
         <Button
+            style="@style/BUTTON"
+            android:background="@drawable/rounded_corner"
             android:id="@+id/reroll"
             android:layout_width="120dp"
             android:layout_height="50dp"
@@ -27,6 +30,8 @@
             android:text="@string/reroll" />
 
         <Button
+            style="@style/BUTTON"
+            android:background="@drawable/rounded_corner"
             android:id="@+id/endTurn"
             android:layout_width="120dp"
             android:layout_height="50dp"
@@ -35,13 +40,14 @@
     </TableRow>
 
     <TextView
+        style="@style/TEXT"
         android:id="@+id/playerDisplay"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
         android:text="Placeholder: Player 1's turn"
-        android:background="#9694cd"
+        android:background="#A19A94"
         app:layout_constraintBottom_toTopOf="@+id/questionDisplay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -50,10 +56,11 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
+        style="@style/TEXT"
         android:id="@+id/questionDisplay"
         android:layout_width="250dp"
         android:layout_height="300dp"
-        android:background="#9694cd"
+        android:background="#A19A94"
         android:gravity="center"
         android:text="Do the dare or take a drink"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,6 +71,7 @@
         app:layout_constraintVertical_bias="0.607" />
 
     <TextView
+        style="@style/TEXT"
         android:id="@+id/gameScreenTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

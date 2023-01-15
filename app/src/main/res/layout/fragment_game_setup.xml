@@ -5,9 +5,12 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameSetupFragment">
+    tools:context=".GameSetupFragment"
+    style="@style/BACKGROUND">
 
     <Button
+        style="@style/BUTTON"
+        android:background="@drawable/rounded_corner"
         android:id="@+id/startGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,6 +22,7 @@
         app:layout_constraintVertical_bias="0.742" />
 
     <TextView
+        style="@style/TEXT"
         android:id="@+id/selectPlayerTitle"
         android:layout_width="244dp"
         android:layout_height="65dp"
@@ -34,6 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
+        style="@style/CHECKBOX"
         android:id="@+id/triviaQuestCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,6 +47,7 @@
         app:layout_constraintStart_toStartOf="@+id/physicalChallengeCheck" />
 
     <CheckBox
+        style="@style/CHECKBOX"
         android:id="@+id/truthCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,6 +56,7 @@
         app:layout_constraintStart_toStartOf="@+id/triviaQuestCheck" />
 
     <CheckBox
+        style="@style/CHECKBOX"
         android:id="@+id/physicalChallengeCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,6 +69,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <CheckBox
+        style="@style/CHECKBOX"
         android:id="@+id/spicyCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,6 +78,7 @@
         app:layout_constraintStart_toStartOf="@+id/dareCheck" />
 
     <CheckBox
+        style="@style/CHECKBOX"
         android:id="@+id/dareCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,6 +87,7 @@
         app:layout_constraintStart_toStartOf="@+id/truthCheck" />
 
     <CheckBox
+        style="@style/CHECKBOX"
         android:id="@+id/customQuestCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

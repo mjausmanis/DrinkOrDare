@@ -1,6 +1,7 @@
 package com.example.drinkordare;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    //Switch darkModeSwitch;
+    //boolean nightMode;
+    //SharedPreferences.Editor editor;
 
     int currentPlayer = 0;
     ArrayList<Player> players = new ArrayList<Player>();
@@ -64,9 +68,20 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        /* darkModeSwitch = findViewById(R.id.darkModeSwitch);
+        sharedPreferences = getSharedPreferences(name: "MODE", Context.MODE_PRIVATE);
+        nightMode = sharedPreferences.getBoolean(s: "night", b: false);
+
+        if (nightMode){
+            darkModeSwitch.setChecked(true);
+        }
+        darkModeSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+    ) */
+
     }
-
-
 
     //Loads preset dares on app startup.
     private void copyAssetToInternalStorage(Context context, String assetName, String fileName) {

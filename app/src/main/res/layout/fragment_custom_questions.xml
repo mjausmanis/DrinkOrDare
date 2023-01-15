@@ -5,7 +5,9 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomQuestionsFragment">
+    android:theme="@style/Theme.DrinkOrDare"
+    tools:context=".CustomQuestionsFragment"
+    style="@style/BACKGROUND">
 
 
     <ScrollView
@@ -33,6 +35,8 @@
                 android:orientation="vertical" />
 
             <Button
+                style="@style/BUTTON"
+                android:background="@drawable/rounded_corner"
                 android:id="@+id/deleteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,6 +46,8 @@
     </ScrollView>
 
     <Button
+        style="@style/BUTTON"
+        android:background="@drawable/rounded_corner"
         android:id="@+id/backToMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

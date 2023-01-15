@@ -5,48 +5,35 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OptionsFragment">
+    android:theme="@style/Theme.DrinkOrDare"
+    tools:context=".OptionsFragment"
+    style="@style/BACKGROUND">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="460dp"
-        android:layout_height="972dp"
-        android:src="@drawable/background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.502" />
-
     <Button
+        style="@style/BUTTON"
+        android:background="@drawable/rounded_corner"
         android:id="@+id/goToMenu"
         android:layout_width="250dp"
         android:layout_height="85dp"
         android:layout_marginBottom="-350dp"
-        android:backgroundTint="#A19A94"
         android:fontFamily="sans-serif-black"
         android:text="Go Back"
-        android:textColor="#3C3532"
         android:textSize="20sp"
-        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#3C3532"
-        app:strokeWidth="4dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        style="@style/TEXT"
         android:id="@+id/playersTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-540dp"
         android:fontFamily="@font/berkshire_swash"
         android:text="@string/options_label"
-        android:textColor="#3C3532"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,13 +41,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
+        style="@style/SWITCH"
         android:id="@+id/darkModeSwitch"
         android:layout_width="250dp"
         android:layout_height="85dp"
         android:layout_marginTop="-300dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/dark_mode"
-        android:textColor="#3C3532"
         android:textSize="24sp"
         android:thumbTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,14 +56,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
+        style="@style/SWITCH"
         android:id="@+id/notificationSwitch"
         android:layout_width="250dp"
         android:layout_height="85dp"
-        android:layout_marginTop="-160dp"
+        android:layout_marginTop="-120dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/notifications"
-        android:textColor="#3C3532"
         android:textSize="24sp"
+        android:thumbTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

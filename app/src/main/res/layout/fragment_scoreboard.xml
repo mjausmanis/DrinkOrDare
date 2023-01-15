@@ -5,9 +5,13 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ScoreboardFragment">
+    tools:context=".ScoreboardFragment"
+    style="@style/BACKGROUND">
+
 
     <Button
+        style="@style/BUTTON"
+        android:background="@drawable/rounded_corner"
         android:id="@+id/nextTurn"
         android:layout_width="90dp"
         android:layout_height="51dp"
@@ -20,6 +24,8 @@
         app:layout_constraintVertical_bias="0.764" />
 
     <Button
+        style="@style/BUTTON"
+        android:background="@drawable/rounded_corner"
         android:id="@+id/endGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,6 +38,7 @@
         app:layout_constraintVertical_bias="0.764" />
 
     <TextView
+        style="@style/TEXT"
         android:id="@+id/scoreBoardTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
