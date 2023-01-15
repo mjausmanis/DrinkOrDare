@@ -23,11 +23,22 @@ import android.view.MenuItem;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
+    int currentPlayer = 0;
+    ArrayList<Player> players = new ArrayList<Player>();
+
+    public void nextPlayer() {
+        this.currentPlayer ++;
+        if (this.currentPlayer >= this.players.size()) {
+            this.currentPlayer = 0;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

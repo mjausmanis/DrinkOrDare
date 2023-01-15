@@ -9,8 +9,13 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.example.drinkordare.databinding.FragmentScoreboardBinding;
+
+import java.util.ArrayList;
 
 public class ScoreboardFragment extends Fragment {
 
@@ -25,15 +30,43 @@ public class ScoreboardFragment extends Fragment {
 
         binding = FragmentScoreboardBinding.inflate(inflater, container, false);
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        LinearLayout linearLayout = (LinearLayout) getView().findViewById(R.id.scoreContent);
+        ArrayList<Player> playerList = ((MainActivity)getActivity()).players;
+        for (int i = 0; i < playerList.size(); i++) {
+            LinearLayout row = new LinearLayout(getActivity());
+            row.setLayoutParams(new
+                    LinearLayout.LayoutParams(ScrollView.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            row.setOrientation(LinearLayout.HORIZONTAL);
+            linearLayout.addView(row);
+
+            String name = playerList.get(i).getName();
+            TextView nameField = new TextView(getActivity());
+            row.addView(nameField);
+            nameField.setText(name);
+
+            String drinks = "Drunk:" + playerList.get(i).getDrinks();
+            TextView drinkCount = new TextView(getActivity());
+            row.addView(drinkCount);
+            drinkCount.setText(drinks);
+
+
+            String dares = "Dares done:" + playerList.get(i).getDareCount();
+            TextView dareCount = new TextView(getActivity());
+            row.addView(dareCount);
+            dareCount.setText(dares);
+        }
+
+
         binding.nextTurn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((MainActivity)getActivity()).nextPlayer();
                 NavHostFragment.findNavController(ScoreboardFragment.this)
                         .navigate(R.id.action_ScoreBoardFragment_to_GameScreenFragment);
             }
@@ -41,6 +74,7 @@ public class ScoreboardFragment extends Fragment {
         binding.endGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((MainActivity)getActivity()).players.clear();
                 NavHostFragment.findNavController(ScoreboardFragment.this)
                         .navigate(R.id.action_ScoreBoardFragment_to_MainMenuFragment);
             }

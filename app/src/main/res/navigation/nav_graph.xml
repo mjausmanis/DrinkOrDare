@@ -72,6 +72,9 @@
         <action
             android:id="@+id/action_CustomQuestionsFragment_to_MainMenuFragment"
             app:destination="@id/MainMenuFragment" />
+        <action
+            android:id="@+id/action_refreshCustomQuestions"
+            app:destination="@id/CustomQuestionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/ScoreboardFragment"

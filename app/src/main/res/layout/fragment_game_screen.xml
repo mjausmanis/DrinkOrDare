@@ -27,7 +27,7 @@
             android:text="@string/reroll" />
 
         <Button
-            android:id="@+id/tempButton"
+            android:id="@+id/endTurn"
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:text="@string/end_turn" />

@@ -1,7 +1,5 @@
 package com.example.drinkordare;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +16,9 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.drinkordare.databinding.PlayerInputFragBinding;
 
-import java.util.ArrayList;
-
 public class PlayerInputFragment extends Fragment {
     int tagValue = 1;
     String[] tagArray = new String[24];
-    ArrayList<Player> players = new ArrayList<Player>();
 
     private PlayerInputFragBinding binding;
 
@@ -42,21 +37,24 @@ public class PlayerInputFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Button that adds an input field
         binding.addPlayerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 if(tagValue <= 24) {
-
+                    //Get fields
                     LinearLayout linearLayout = (LinearLayout) getView().findViewById(R.id.inputLinearLayout);
+                    ScrollView scrollView = (ScrollView) getView().findViewById(R.id.scoreBoardScrollView);
                     Button button = (Button) getView().findViewById(R.id.addPlayerButton);
-                    ScrollView scrollView = (ScrollView) getView().findViewById(R.id.inputScrollView);
 
+                    //Create a new text input field when button is pressed
                     EditText editText = new EditText(getActivity());
                     editText.setLayoutParams(new
                             LinearLayout.LayoutParams(ScrollView.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.WRAP_CONTENT));
                     linearLayout.addView(editText);
 
+                    //Tag the field for identification, add it to an array.
                     String tag = "playerName" + tagValue;
                     editText.setTag(tag);
                     tagArray[tagValue-1] = tag;
@@ -69,22 +67,30 @@ public class PlayerInputFragment extends Fragment {
             }
         });
 
+        //Button the goes to the next screen
         binding.goToGameSetup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Go through all the input fields, create player objects and to shared list
                 for (int i = 0; i < tagArray.length; i++) {
                     if (tagArray[i] != null) {
 
                         EditText field = getView().findViewWithTag(tagArray[i]);
                         String name = field.getText().toString();
 
-                        Player player = new Player(name);
-                        players.add(player);
+                        if (!name.equals("")) {
+                            Player player = new Player(name);
+                            ((MainActivity)getActivity()).players.add(player);
 
+                        }
                     }
                 }
-                NavHostFragment.findNavController(PlayerInputFragment.this)
+                if (((MainActivity)getActivity()).players.size() > 0) {
+                    NavHostFragment.findNavController(PlayerInputFragment.this)
                         .navigate(R.id.action_PlayerInputFragment_to_GameSetupFragment);
+                } else {
+                    Toast.makeText(getActivity(), "Need at least 1 player", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
