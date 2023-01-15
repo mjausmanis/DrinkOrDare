@@ -43,6 +43,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.DrinkOrDare.Splash" parent="Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="android:windowBackground">@color/champagne</item>
+    </style>
     <style name="Theme.DrinkOrDare.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.DrinkOrDare.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

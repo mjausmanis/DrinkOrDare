@@ -75,6 +75,7 @@ public class ScoreboardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).players.clear();
+                ((MainActivity)getActivity()).chosenQuestions.clear();
                 NavHostFragment.findNavController(ScoreboardFragment.this)
                         .navigate(R.id.action_ScoreBoardFragment_to_MainMenuFragment);
             }

@@ -2,30 +2,25 @@ package com.example.drinkordare;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
-
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.example.drinkordare.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
-
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     int currentPlayer = 0;
     ArrayList<Player> players = new ArrayList<Player>();
+    ArrayList<String[]> questions = new ArrayList<String[]>();
+    ArrayList<String[]> chosenQuestions = new ArrayList<String[]>();
 
     public void nextPlayer() {
         this.currentPlayer ++;
@@ -48,11 +45,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //Pārkopēt cards no assets uz internal storage startup brīdī
-        copyAssetToInternalStorage(this, "cards.txt", "preset.txt");
-        //Music
+        //copyAssetToInternalStorage(this, "cards.txt", "preset.txt");
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(getAssets().open("cards.txt")));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] question = new String[2];
+                question = line.split(";");
+                this.questions.add(question);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.maukusencis);
+        //Music
+        mediaPlayer = MediaPlayer.create(this, R.raw.maukusencisinstrumental);
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(1f, 1f);
@@ -82,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
     ) */
 
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.pause();
+    }
 
     //Loads preset dares on app startup.
     private void copyAssetToInternalStorage(Context context, String assetName, String fileName) {
@@ -98,5 +113,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mediaPlayer.start();
     }
 }
