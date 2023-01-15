@@ -40,14 +40,15 @@ public class MainActivity extends AppCompatActivity {
             this.currentPlayer = 0;
         }
     }
-
+    private static MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Pārkopēt cards no assets uz internal storage startup brīdī
         copyAssetToInternalStorage(this, "cards.txt", "preset.txt");
         //Music
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.maukusencis);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.maukusencis);
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(1f, 1f);
