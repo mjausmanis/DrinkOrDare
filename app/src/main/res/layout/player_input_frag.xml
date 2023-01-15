@@ -34,7 +34,7 @@
         tools:textAlignment="center" />
 
     <ScrollView
-        android:id="@+id/inputScrollView"
+        android:id="@+id/scoreBoardScrollView"
         android:layout_width="250dp"
         android:layout_height="320dp"
         android:layout_marginTop="15dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/playersTitle">
 
         <LinearLayout
-            android:id="@+id/inputContentLayout"
+            android:id="@+id/scoreContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

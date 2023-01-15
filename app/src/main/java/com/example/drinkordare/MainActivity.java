@@ -1,6 +1,7 @@
 package com.example.drinkordare;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -23,17 +24,34 @@ import android.view.MenuItem;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+    int currentPlayer = 0;
+    ArrayList<Player> players = new ArrayList<Player>();
+
+    public void nextPlayer() {
+        this.currentPlayer ++;
+        if (this.currentPlayer >= this.players.size()) {
+            this.currentPlayer = 0;
+        }
+    }
+    private static MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Pārkopēt cards no assets uz internal storage startup brīdī
         copyAssetToInternalStorage(this, "cards.txt", "preset.txt");
+        //Music
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.maukusencis);
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(1f, 1f);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

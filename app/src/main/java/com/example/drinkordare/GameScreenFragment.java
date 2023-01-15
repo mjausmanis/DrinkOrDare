@@ -1,6 +1,8 @@
 package com.example.drinkordare;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -52,6 +54,11 @@ public class GameScreenFragment extends Fragment {
         TextView questionDisplay = getView().findViewById(R.id.questionDisplay);
         questionDisplay.setText(textFromFile);
 
+        String playerName = ((MainActivity)getActivity()).players.get(((MainActivity)getActivity()).currentPlayer).name;
+        String displayText = playerName + "'s turn";
+        TextView playerDisplay = getView().findViewById(R.id.playerDisplay);
+        playerDisplay.setText(displayText);
+
         binding.reroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,11 +68,51 @@ public class GameScreenFragment extends Fragment {
             }
         });
 
-        binding.tempButton.setOnClickListener(new View.OnClickListener() {
+        binding.endTurn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(GameScreenFragment.this)
-                        .navigate(R.id.action_GameScreenFragment_to_ScoreboardFragment);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("What happened?")
+                        .setPositiveButton("Did the dare", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                                ((MainActivity)getActivity()).players.get(((MainActivity)getActivity()).currentPlayer).addDareDone();
+                                NavHostFragment.findNavController(GameScreenFragment.this)
+                                        .navigate(R.id.action_GameScreenFragment_to_ScoreboardFragment);
+                            }
+                        })
+                        .setNeutralButton("Took a drink", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getContext());
+                                builder2.setTitle("What's the drink?")
+                                        .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.dismiss();
+
+                                                //Have to add the drink selection
+
+
+                                                ((MainActivity)getActivity()).players.get(((MainActivity)getActivity()).currentPlayer).addDrinks(1);
+                                                NavHostFragment.findNavController(GameScreenFragment.this)
+                                                        .navigate(R.id.action_GameScreenFragment_to_ScoreboardFragment);
+                                            }
+                                        })
+                                        .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                AlertDialog dialog2 = builder2.create();
+                                dialog2.show();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
     }
