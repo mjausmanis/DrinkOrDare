@@ -71,29 +71,10 @@ public class GameScreenFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getContext());
-                                builder2.setTitle("What's the drink?")
-                                        .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                dialog.dismiss();
+                                ((MainActivity)getActivity()).players.get(((MainActivity)getActivity()).currentPlayer).addDrinks(1);
+                                NavHostFragment.findNavController(GameScreenFragment.this)
+                                        .navigate(R.id.action_GameScreenFragment_to_ScoreboardFragment);
 
-                                                //Have to add the drink selection
-
-
-                                                ((MainActivity)getActivity()).players.get(((MainActivity)getActivity()).currentPlayer).addDrinks(1);
-                                                NavHostFragment.findNavController(GameScreenFragment.this)
-                                                        .navigate(R.id.action_GameScreenFragment_to_ScoreboardFragment);
-                                            }
-                                        })
-                                        .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        });
-
-                                AlertDialog dialog2 = builder2.create();
-                                dialog2.show();
                             }
                         });
                 AlertDialog dialog = builder.create();
