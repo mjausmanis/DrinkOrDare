@@ -1,16 +1,11 @@
 package com.example.drinkordare;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,15 +15,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    //Switch darkModeSwitch;
-    //boolean nightMode;
-    //SharedPreferences.Editor editor;
 
     int currentPlayer = 0;
     ArrayList<Player> players = new ArrayList<Player>();
@@ -41,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             this.currentPlayer = 0;
         }
     }
-    private static MediaPlayer mediaPlayer;
+    static MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Music
-        mediaPlayer = MediaPlayer.create(this, R.raw.maukusencisinstrumental);
+        mediaPlayer = MediaPlayer.create(this, R.raw.maukusencis);
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(1f, 1f);
@@ -77,18 +68,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
 
-        /* darkModeSwitch = findViewById(R.id.darkModeSwitch);
-        sharedPreferences = getSharedPreferences(name: "MODE", Context.MODE_PRIVATE);
-        nightMode = sharedPreferences.getBoolean(s: "night", b: false);
-
-        if (nightMode){
-            darkModeSwitch.setChecked(true);
-        }
-        darkModeSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-    ) */
-
     }
     @Override
     protected void onPause() {
@@ -100,5 +79,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mediaPlayer.start();
+    }
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("isMusicPlaying", OptionsFragment.isMusicPlaying);
     }
 }

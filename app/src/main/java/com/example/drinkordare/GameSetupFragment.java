@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Toast;
-
 import com.example.drinkordare.databinding.FragmentGameSetupBinding;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;

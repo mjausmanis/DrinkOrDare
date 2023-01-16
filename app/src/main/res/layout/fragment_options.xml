@@ -63,12 +63,12 @@
 
     <Switch
         style="@style/SWITCH"
-        android:id="@+id/notificationSwitch"
+        android:id="@+id/musicSwitch"
         android:layout_width="250dp"
         android:layout_height="85dp"
         android:layout_marginTop="-120dp"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/notifications"
+        android:text="Music"
         android:textSize="24sp"
         android:thumbTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
