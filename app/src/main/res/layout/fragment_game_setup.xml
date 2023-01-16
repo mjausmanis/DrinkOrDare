@@ -8,6 +8,46 @@
     tools:context=".GameSetupFragment"
     style="@style/BACKGROUND">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="317dp"
+        android:layout_height="437dp"
+        android:layout_marginBottom="300dp"
+        android:accessibilityLiveRegion="none"
+        android:src="@drawable/flaming_coctail"
+        android:tint="#33FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="166dp"
+        android:layout_height="375dp"
+        android:layout_marginEnd="250dp"
+        android:rotation="-25"
+        android:src="@drawable/champagne"
+        android:tint="#33FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="328dp"
+        android:layout_height="471dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="330dp"
+        android:rotation="25"
+        android:src="@drawable/beer"
+        android:tint="#33FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         style="@style/BUTTON"
         android:background="@drawable/rounded_corner"
@@ -24,18 +64,21 @@
     <TextView
         style="@style/TEXT"
         android:id="@+id/selectPlayerTitle"
-        android:layout_width="244dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="116dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-540dp"
         android:gravity="center"
         android:fontFamily="@font/berkshire_swash"
         android:text="@string/game_setup_label"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="24sp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49"/>
 
     <CheckBox
         style="@style/CHECKBOX"
