@@ -29,9 +29,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-//Scrollable būtu jānoņem, nav īsti jēga
-//Varbūt pie tā pop-up ar custom q
-// Savādak nevajag
+
 public class CustomQuestionsFragment extends Fragment {
     private FragmentCustomQuestionsBinding binding;
 
