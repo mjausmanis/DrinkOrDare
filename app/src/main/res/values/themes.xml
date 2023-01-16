@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#8071A2</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColor">#3C3532</item>
     </style>
 
     <!-- Light Mode -->
@@ -33,6 +34,9 @@
     </style>
     <style name="CHECKBOX">
         <item name="android:textColor">#3C3532</item>
+    </style>
+    <style name="scoreBoardLine">
+        <item name="android:textSize">20dp</item>
     </style>
     
 

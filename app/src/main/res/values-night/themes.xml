@@ -11,7 +11,9 @@
         <item name="colorOnSecondary">#3C3532</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:alertDialogStyle">@style/dialogAlertStyle</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColor">#FFEBA4</item>
     </style>
 
     <!-- Dark Mode -->
@@ -33,6 +35,12 @@
     </style>
     <style name="CHECKBOX">
         <item name="android:textColor">#FFEBA4</item>
+    </style>
+    <style name="dialogAlertStyle" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:buttonBarButtonStyle">@style/dialogButtons</item>
+    </style>
+    <style name="dialogButtons">
+        <item name="buttonBarPositiveButtonStyle">@style/TEXT</item>
     </style>
 
 </resources>

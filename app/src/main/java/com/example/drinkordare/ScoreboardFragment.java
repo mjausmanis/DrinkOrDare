@@ -6,10 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -45,19 +47,25 @@ public class ScoreboardFragment extends Fragment {
             row.setOrientation(LinearLayout.HORIZONTAL);
             linearLayout.addView(row);
 
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(75, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(5,0,5, 0);
             String name = playerList.get(i).getName();
             TextView nameField = new TextView(getActivity());
+            nameField.setTextAppearance(getActivity(), R.style.scoreBoardLine);
+
             row.addView(nameField);
             nameField.setText(name);
 
-            String drinks = "Drunk:" + playerList.get(i).getDrinks();
+            String drinks = "Drinks:" + playerList.get(i).getDrinks();
             TextView drinkCount = new TextView(getActivity());
+            drinkCount.setTextAppearance(getActivity(), R.style.scoreBoardLine);
             row.addView(drinkCount);
             drinkCount.setText(drinks);
 
 
-            String dares = "Dares done:" + playerList.get(i).getDareCount();
+            String dares = "Dares:" + playerList.get(i).getDareCount();
             TextView dareCount = new TextView(getActivity());
+            dareCount.setTextAppearance(getActivity(), R.style.scoreBoardLine);
             row.addView(dareCount);
             dareCount.setText(dares);
         }

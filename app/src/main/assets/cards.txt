@@ -1,5 +1,19 @@
-Physical challenge that comes with app nr 1.;physical
-Trivia question that comes with app nr 2.;trivia
-Truth question that comes with app nr 3.;truth
-Dare that comes with app nr 4.;dare
-Spicy question that comes with app nr 5.;spice
+Do 10 push-ups or take a small drink.;physical
+Do 10 squats with a book on your head or take a medium drink;physical
+Do two somersaults in a row or take a medium drink.;physical
+Hold a plank for 30 seconds with a glass of water on your back or take a medium drink.;physical
+Name 4 countries beginning with the letter "S" or take a medium drink.;trivia
+Name 5 elements from the periodic table or take a medium drink.;trivia
+Name 7 European capitals or take a medium drink.;trivia
+Name 3 different movies that have time travel (different franchises) or take a medium drink.;trivia
+"Have you ever stolen something before? What?" Answer or take a medium drink;truth
+"Have you ever been in a physical fight? What happened?" Answer or take a medium drink;truth
+"What is something you've always wanted to try but haven't yet?" Answer or take a medium drink;truth
+"What is your proudest achievement?" Answer or take a medium drink;truth
+"If you could have any superpower, what would it be?" Answer or take a medium drink;truth
+Do an impression of a famous person in front of everyone or take a medium drink.;dare
+Jumpscare someone before your next turn. If you fail take a big drink.;dare
+"Truth: Who is someone you hate?" Answer or take a medium drink.;spice
+"Truth: Have you ever been attracted to someone in this room?" Answer or take a medium drink;spice
+"Dare: Kiss someone of the opposite sex in the group" Do the dare or take a medium drink;spice
+"Truth: Have you ever had a crush on one of your friends?" Answer or take a medium drink;spice

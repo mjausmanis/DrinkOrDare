@@ -47,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //Pārkopēt cards no assets uz internal storage startup brīdī
-        //copyAssetToInternalStorage(this, "cards.txt", "preset.txt");
+
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(getAssets().open("cards.txt")));
             String line;
@@ -77,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         /* darkModeSwitch = findViewById(R.id.darkModeSwitch);
         sharedPreferences = getSharedPreferences(name: "MODE", Context.MODE_PRIVATE);
@@ -98,21 +96,6 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer.pause();
     }
 
-    //Loads preset dares on app startup.
-    private void copyAssetToInternalStorage(Context context, String assetName, String fileName) {
-        try {
-            InputStream is = context.getAssets().open(assetName);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-
-            FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-            fos.write(buffer);
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     @Override
     protected void onResume() {
         super.onResume();

@@ -1,5 +1,6 @@
 package com.example.drinkordare;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,29 +20,17 @@ import com.example.drinkordare.databinding.FragmentOptionsBinding;
 public class OptionsFragment extends Fragment {
 
     private FragmentOptionsBinding binding;
+    boolean darkModeOn  = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Switch switch1 = getView().findViewById(R.id.darkModeSwitch);
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    getActivity().recreate();
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    getActivity().recreate();
-                }
-            }
-        });
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         binding = FragmentOptionsBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -50,6 +39,34 @@ public class OptionsFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Switch switch1 = getView().findViewById(R.id.darkModeSwitch);
+        int nightModeFlags =
+                getContext().getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                switch1.setChecked(true);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                switch1.setChecked(false);
+                break;
+        }
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    darkModeOn = true;
+                    getActivity().recreate();
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    darkModeOn = false;
+                    getActivity().recreate();
+                }
+            }
+        });
 
         binding.goToMenu.setOnClickListener(new View.OnClickListener() {
             @Override

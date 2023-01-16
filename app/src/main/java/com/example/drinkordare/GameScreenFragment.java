@@ -106,6 +106,7 @@ public class GameScreenFragment extends Fragment {
                                                 dialog.dismiss();
                                             }
                                         });
+
                                 AlertDialog dialog2 = builder2.create();
                                 dialog2.show();
                             }

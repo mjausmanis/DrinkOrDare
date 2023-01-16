@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.example.drinkordare.databinding.FragmentGameSetupBinding;
 
@@ -50,37 +51,44 @@ public class GameSetupFragment extends Fragment {
                 CheckBox spicy = (CheckBox) getView().findViewById(R.id.spicyCheck);
                 CheckBox custom = (CheckBox) getView().findViewById(R.id.customQuestCheck);
 
-                for (int i = 0; i < questions.size(); i++) {
-                    if (questions.get(i)[1].equals("physical") && physical.isChecked()) {
-                        ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
-                    } else if (questions.get(i)[1].equals("trivia") && trivia.isChecked()) {
-                        ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
-                    } else if (questions.get(i)[1].equals("truth") && truth.isChecked()) {
-                        ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
-                    } else if (questions.get(i)[1].equals("dare") && dares.isChecked()) {
-                        ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
-                    } else if (questions.get(i)[1].equals("spice") && spicy.isChecked()) {
-                        ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
-                    }
-                }
-                if (custom.isChecked()) {
-                    try {
-                        File customFile = new File(getActivity().getFilesDir(), "custom.txt");
-                        InputStream customInputStream = new FileInputStream(customFile);
-                        BufferedReader customBr = new BufferedReader(new InputStreamReader(customInputStream));
-                        String line;
-                        while ((line = customBr.readLine()) != null) {
-                            String[] question = {line, "custom"};
-                            ((MainActivity)getActivity()).chosenQuestions.add(question);
-                        }
-                        customBr.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
 
-                NavHostFragment.findNavController(GameSetupFragment.this)
-                        .navigate(R.id.action_GameSetupFragment_to_GameScreenFragment);
+                if (!physical.isChecked() && !trivia.isChecked() && !truth.isChecked()  && !dares.isChecked()  && !spicy.isChecked()  && !custom.isChecked() ) {
+                    Toast.makeText(getActivity(), "Select at least 1 question group!", Toast.LENGTH_SHORT).show();
+                } else {
+                    for (int i = 0; i < questions.size(); i++) {
+                        if (questions.get(i)[1].equals("physical") && physical.isChecked()) {
+                            ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
+                        } else if (questions.get(i)[1].equals("trivia") && trivia.isChecked()) {
+                            ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
+                        } else if (questions.get(i)[1].equals("truth") && truth.isChecked()) {
+                            ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
+                        } else if (questions.get(i)[1].equals("dare") && dares.isChecked()) {
+                            ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
+                        } else if (questions.get(i)[1].equals("spice") && spicy.isChecked()) {
+                            ((MainActivity) getActivity()).chosenQuestions.add(questions.get(i));
+                        }
+                    }
+
+                    if (custom.isChecked()) {
+                        try {
+                            File customFile = new File(getActivity().getFilesDir(), "custom.txt");
+                            InputStream customInputStream = new FileInputStream(customFile);
+                            BufferedReader customBr = new BufferedReader(new InputStreamReader(customInputStream));
+                            String line;
+                            while ((line = customBr.readLine()) != null) {
+                                String[] question = {line, "custom"};
+                                ((MainActivity) getActivity()).chosenQuestions.add(question);
+                            }
+                            customBr.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                    NavHostFragment.findNavController(GameSetupFragment.this)
+                            .navigate(R.id.action_GameSetupFragment_to_GameScreenFragment);
+                }
             }
         });
     }

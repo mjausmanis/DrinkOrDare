@@ -60,7 +60,6 @@ public class PlayerInputFragment extends Fragment {
                     tagArray[tagValue-1] = tag;
                     tagValue++;
 
-                    scrollView.scrollToDescendant(button);
                 } else {
                     Toast.makeText(getActivity(), "Can't have more than 24 players", Toast.LENGTH_SHORT).show();
                 }
@@ -76,7 +75,7 @@ public class PlayerInputFragment extends Fragment {
                     if (tagArray[i] != null) {
 
                         EditText field = getView().findViewWithTag(tagArray[i]);
-                        String name = field.getText().toString();
+                        String name = field.getText().toString().trim();
 
                         if (!name.equals("")) {
                             Player player = new Player(name);
