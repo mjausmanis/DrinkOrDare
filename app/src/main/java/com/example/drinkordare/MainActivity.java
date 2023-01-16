@@ -1,76 +1,104 @@
 package com.example.drinkordare;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
-
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.example.drinkordare.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    //Switch darkModeSwitch;
+    //boolean nightMode;
+    //SharedPreferences.Editor editor;
 
+    int currentPlayer = 0;
+    ArrayList<Player> players = new ArrayList<Player>();
+    ArrayList<String[]> questions = new ArrayList<String[]>();
+    ArrayList<String[]> chosenQuestions = new ArrayList<String[]>();
+
+    public void nextPlayer() {
+        this.currentPlayer ++;
+        if (this.currentPlayer >= this.players.size()) {
+            this.currentPlayer = 0;
+        }
+    }
+    private static MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(getAssets().open("cards.txt")));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] question = new String[2];
+                question = line.split(";");
+                this.questions.add(question);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Music
+        mediaPlayer = MediaPlayer.create(this, R.raw.maukusencisinstrumental);
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(1f, 1f);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
+        getSupportActionBar().hide();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+
+        /* darkModeSwitch = findViewById(R.id.darkModeSwitch);
+        sharedPreferences = getSharedPreferences(name: "MODE", Context.MODE_PRIVATE);
+        nightMode = sharedPreferences.getBoolean(s: "night", b: false);
+
+        if (nightMode){
+            darkModeSwitch.setChecked(true);
+        }
+        darkModeSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    ) */
+
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.pause();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+    protected void onResume() {
+        super.onResume();
+        mediaPlayer.start();
     }
 }

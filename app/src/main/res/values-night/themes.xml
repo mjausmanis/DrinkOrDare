@@ -2,15 +2,45 @@
     <!-- Base application theme. -->
     <style name="Theme.DrinkOrDare" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimary">#504A42</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">#FFEBA4</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">#3C3532</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:alertDialogStyle">@style/dialogAlertStyle</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColor">#FFEBA4</item>
     </style>
+
+    <!-- Dark Mode -->
+    <!-- Screen Background if Dark Mode on -->
+    <style name="BACKGROUND">
+        <item name="android:background">#292623</item>
+    </style>
+    <!-- Text Background if Dark Mode on -->
+    <style name="TEXT">
+        <item name="android:textColor">#FFEBA4</item>
+    </style>
+    <!-- Button Background if Dark Mode on -->
+    <style name="BUTTON">
+        <item name="android:background">#3C3532</item>
+        <item name="android:textColor">#FFEBA4</item>
+    </style>
+    <style name="SWITCH">
+        <item name="android:textColor">#FFEBA4</item>
+    </style>
+    <style name="CHECKBOX">
+        <item name="android:textColor">#FFEBA4</item>
+    </style>
+    <style name="dialogAlertStyle" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:buttonBarButtonStyle">@style/dialogButtons</item>
+    </style>
+    <style name="dialogButtons">
+        <item name="buttonBarPositiveButtonStyle">@style/TEXT</item>
+    </style>
+
 </resources>
