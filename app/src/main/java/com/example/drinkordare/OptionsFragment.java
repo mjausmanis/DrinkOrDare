@@ -1,5 +1,7 @@
 package com.example.drinkordare;
 
+import static com.example.drinkordare.MainActivity.mediaPlayer;
+
 import android.content.res.Configuration;
 import android.os.Bundle;
 
@@ -20,6 +22,7 @@ import com.example.drinkordare.databinding.FragmentOptionsBinding;
 public class OptionsFragment extends Fragment {
 
     private FragmentOptionsBinding binding;
+    static boolean isMusicPlaying = true;
     boolean darkModeOn  = false;
 
     @Override
@@ -67,6 +70,37 @@ public class OptionsFragment extends Fragment {
                 }
             }
         });
+
+
+
+        Switch switch2 = getView().findViewById(R.id.musicSwitch);
+        if (isMusicPlaying) {
+            switch2.setChecked(true);
+        } else {
+            switch2.setChecked(false);
+        }
+        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // start music
+                    if(!mediaPlayer.isPlaying())
+                        mediaPlayer.start();
+                } else {
+                    // stop music
+                    if(mediaPlayer.isPlaying())
+                        mediaPlayer.pause();
+                }
+            }
+        });
+
+
+
+
+
+
+
+
 
         binding.goToMenu.setOnClickListener(new View.OnClickListener() {
             @Override
